@@ -1,0 +1,34 @@
+{
+  "name": "github-finder",
+  "version": "1.0.0",
+  "description": "Javascript application for fetching user profiles from GitHub and displaying on the page",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rimraf ./dist && rimraf -rf ./.cache",
+    "start": "parcel ./src/index.html --open",
+    "build": "npm run clean && parcel build ./src/index.html --public-url ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lukisrac/GitHub-Finder-App.git"
+  },
+  "keywords": [
+    "javascript",
+    "github",
+    "finder"
+  ],
+  "author": "Lukáš Rác",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lukisrac/GitHub-Finder-App/issues"
+  },
+  "homepage": "https://github.com/lukisrac/GitHub-Finder-App#readme",
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "parcel-bundler": "^1.12.4",
+    "parcel-plugin-custom-dist-structure": "^1.1.16",
+    "rimraf": "^3.0.2",
+    "sass": "^1.29.0"
+  }
+}
