@@ -8,8 +8,45 @@
   <title>Github Finder</title>
   <link rel="stylesheet" href="./scss/main.scss">
 </head>
-<body>
-  <h1>Hello World!</h1>
+<body class="d-flex flex-column min-vh-100">
+  <header>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col text-center py-4">
+          <h1>GitHub Finder</h1>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="bg-grey flex-fill">
+    <section class="section__search">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-12 col-lg-6 form-row">
+            <form class="m-3 p-2 rounded-lg">
+              <div class="row gx-2">
+                <div class="col-1">
+                  <label for="search" class="w-100 h-100 d-flex justify-content-center align-items-center">
+                    <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+                      <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+                    </svg>
+                  </label>
+                </div>
+                <div class="col-9">
+                  <input type="text" id="search" class="form-control border-0" placeholder="Enter GitHub user" autocomplete="off">
+                </div>
+                <div class="col-2">
+                  <button type="submit" class="btn btn-block btn-primary">Search</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <script src="./js/app.js"></script>
 </body>

@@ -1,5 +1,11 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@import "~bootstrap/scss/bootstrap";
+
+$bg-grey: #f1f5f8;
+
+.bg-grey {
+  background: $bg-grey;
+}
+
+form {
+  background: #fff;
 }
