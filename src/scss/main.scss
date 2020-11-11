@@ -9,3 +9,13 @@ $bg-grey: #f1f5f8;
 form {
   background: #fff;
 }
+
+.user {
+  &__image {
+    width: 100px;
+    border-radius: 50%;
+  }
+  &__name {
+    font-size: 1.2rem;
+  }
+}
