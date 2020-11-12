@@ -7,7 +7,7 @@ const singleUserSection = document.getElementById('section-single-result');
 const requestOptions = {
   method: 'GET',
   headers: {
-    Authorization: 'Bearer 41293461585fb6df606c8b1c5c0db919dcbbb516',
+    Authorization: `${process.env.GITHUB_PERSONAL_ACCESS_TOKEN}`,
   },
 };
 
