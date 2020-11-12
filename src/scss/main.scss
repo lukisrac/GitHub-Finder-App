@@ -1,9 +1,25 @@
 @import "~bootstrap/scss/bootstrap";
 
 $bg-grey: #f1f5f8;
+$icon-green: #198754;
+$icon-red: #dc3545;
+$icon-orange: #ffc107;
+$icon-azure-blue: #0dcaf0;
 
 .bg-grey {
   background: $bg-grey;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
 }
 
 form {
@@ -17,5 +33,41 @@ form {
   }
   &__name {
     font-size: 1.2rem;
+  }
+  &__info {
+    height: 100%;
+    .card-body > .row {
+      height: 100%;
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+  &__info-icon {
+    .icon {
+      font-size: 2rem;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: max-content;
+      height: max-content;
+      padding: 1rem;
+      &--green {
+        background-color: lighten($icon-green, 60%);
+        color: $icon-green;
+      }
+      &--red {
+        background-color: lighten($icon-red, 40%);
+        color: $icon-red;
+      }
+      &--orange {
+        background-color: lighten($icon-orange, 40%);
+        color: $icon-orange;
+      }
+      &--azure-blue {
+        background-color: lighten($icon-azure-blue, 40%);
+        color: $icon-azure-blue;
+      }
+    }
   }
 }

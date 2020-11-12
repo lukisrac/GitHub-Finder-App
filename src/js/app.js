@@ -3,6 +3,7 @@ const clearButton = document.getElementById('clear-results');
 const resultsSection = document.getElementById('section-results');
 const resultsContainer = document.querySelector('.section-results .row');
 const singleUserSection = document.getElementById('section-single-result');
+const spinnerLoader = document.getElementById('spinner-loader');
 
 const requestOptions = {
   method: 'GET',
@@ -12,8 +13,8 @@ const requestOptions = {
 };
 
 // Render results
-const setupResults = (data) => {
-  let template = `
+const renderResults = (data) => {
+  const template = `
     <div class="col">
       <div class="card user">
         <div class="card-body text-center">
@@ -34,6 +35,7 @@ searchForm.addEventListener('submit', (e) => {
   // Prevent default form submit
   e.preventDefault();
 
+  spinnerLoader.classList.toggle('d-none');
   resultsContainer.innerHTML = '';
   if (resultsSection.classList.contains('d-none')) {
     resultsSection.classList.remove('d-none');
@@ -46,11 +48,12 @@ searchForm.addEventListener('submit', (e) => {
     .then((response) => response.json())
     .then((data) => {
       let results = data.items;
-      console.log(results);
+      //console.log(results);
       results.forEach((results) => {
-        setupResults(results);
+        renderResults(results);
       });
       searchForm.reset();
+      spinnerLoader.classList.toggle('d-none');
       getSingleUser();
     })
     .catch((err) => console.log(err));
@@ -67,18 +70,53 @@ const clearResults = () => {
 clearButton.addEventListener('click', clearResults);
 
 // Render page to display info of a single user
+const renderUser = (data) => {
+  const avatar = document.querySelector('.user__avatar');
+  const fullname = document.querySelector('.user__fullname');
+  const twitter = document.querySelector('.user__twitter');
+  const followBtn = document.querySelector('.user__follow-btn');
+  const bio = document.querySelector('.user__bio');
+  const company = document.querySelector('.user__company .text');
+  const location = document.querySelector('.user__location .text');
+  const website = document.querySelector('.user__website a');
+  const repositories = document.getElementById('user__repositories');
+  const followers = document.getElementById('user__followers');
+  const following = document.getElementById('user__following');
+  const gists = document.getElementById('user__gists');
+
+  avatar.setAttribute('src', data.avatar_url);
+  fullname.textContent = data.name;
+  twitter.textContent = `@${data.twitter_username}`;
+  followBtn.setAttribute('href', data.html_url);
+  bio.textContent = data.bio;
+  company.textContent = data.company;
+  location.textContent = data.location;
+  website.textContent = data.blog;
+  website.setAttribute('href', data.blog);
+  repositories.textContent = data.public_repos;
+  followers.textContent = data.followers;
+  following.textContent = data.following;
+  gists.textContent = data.public_gists;
+};
+
 const getSingleUser = () => {
   let userButtons = document.querySelectorAll('.user__more-info');
   userButtons.forEach((button) => {
     button.addEventListener('click', () => {
       resultsSection.classList.add('d-none');
-      singleUserSection.classList.remove('d-none');
+      spinnerLoader.classList.toggle('d-none');
+      //singleUserSection.classList.remove('d-none');
 
       const userURL = button.getAttribute('data-href');
 
       fetch(userURL, requestOptions)
         .then((response) => response.json())
-        .then((data) => console.log(data))
+        .then((data) => {
+          //console.log(data);
+          renderUser(data);
+          singleUserSection.classList.remove('d-none');
+          spinnerLoader.classList.toggle('d-none');
+        })
         .catch((err) => console.log(err));
     });
   });
